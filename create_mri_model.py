@@ -1,37 +1,22 @@
 
-from keras.applications.resnet import ResNet50
-from keras.callbacks import ModelCheckpoint, Callback
-from keras.layers.pooling import MaxPooling2D
+from keras.callbacks import ModelCheckpoint
 from keras.models import Sequential
-
 import numpy as np
 from keras.preprocessing.image import ImageDataGenerator
-from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPool2D, BatchNormalization
-from keras import losses
+from keras.layers import Dense, Dropout, Flatten, BatchNormalization
 from matplotlib import pyplot as plt
 import matplotlib.image as mpimg
 import random
-
-import os
-from distutils.dir_util import copy_tree, remove_tree
-
-from tensorflow.python.keras.saving.save import load_model
-
+from keras.saving.save import load_model
 from imblearn.over_sampling import SMOTE
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import matthews_corrcoef as MCC
-from sklearn.metrics import balanced_accuracy_score as BAS
-from sklearn.metrics import classification_report, confusion_matrix
-
+from sklearn.metrics import confusion_matrix
 from keras.metrics import *
-from keras.utils.vis_utils import plot_model
-from tensorflow.keras import Sequential, Input
-from tensorflow.keras.layers import Dense, Dropout
-from tensorflow.keras.layers import Conv2D, Flatten
-from tensorflow.keras.callbacks import ReduceLROnPlateau
-from tensorflow.keras.applications.inception_v3 import InceptionV3
-from tensorflow.keras.preprocessing.image import ImageDataGenerator as IDG
-from tensorflow.keras.layers import SeparableConv2D, BatchNormalization, GlobalAveragePooling2D
+from keras.layers import Dense, Dropout
+from keras.layers import Flatten
+from keras.applications.inception_v3 import InceptionV3
+from keras.preprocessing.image import ImageDataGenerator
+from keras.layers import BatchNormalization, GlobalAveragePooling2D
 
 
 
@@ -122,6 +107,8 @@ model.summary()
 
 
 
+
+
 check = ModelCheckpoint(filepath='model-{epoch}.model', save_best_only=True, monitor='val_loss')
 
     
@@ -129,6 +116,7 @@ model.compile(optimizer='rmsprop', loss='categorical_crossentropy',
                               metrics=['acc'])
 
 model.summary()
+
 
 EPOCHS = 50
 
