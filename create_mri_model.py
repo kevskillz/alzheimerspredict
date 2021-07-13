@@ -120,4 +120,4 @@ model.summary()
 
 EPOCHS = 50
 
-history = model.fit(train_data, train_labels, validation_data=(val_data, val_labels), epochs=EPOCHS, callbacks=[check])
+model.fit(train_data, train_labels, validation_data=(val_data, val_labels), epochs=EPOCHS, callbacks=[check])
