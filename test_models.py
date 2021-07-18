@@ -1,6 +1,3 @@
-from matplotlib.pyplot import plot
-
-
 class PredictAzlheimersData:
     
     def __init__(self):
@@ -45,14 +42,14 @@ class PredictAzlheimersImg:
             resArr[self.refDict[i]] = value
             
         
-        return resArr
-    
-    def show_model(self):
-        from keras.utils.vis_utils import plot_model
-        plot_model(self.model)
+        return max(resArr, key=resArr.get)
 
-    
 
+
+modelI = PredictAzlheimersImg() # ~94.14% accuracy
+
+print(modelI.predict('images\\MildDemented\\28.jpg'))
+# should be Mild Alzheimer's
 
 modelD = PredictAzlheimersData()
 print(modelD.predict('M', 68, 18, 1.0, 1449)) # ~95.7575% accuracy
@@ -60,10 +57,5 @@ print(modelD.predict('M', 68, 18, 1.0, 1449)) # ~95.7575% accuracy
 
 print(modelD.predict('F', 75, 12, 1.293, 1357))
 # Mild Alzheimer's Patient
-
-modelI = PredictAzlheimersImg() # ~94.14% accuracy
-
-print(modelI.predict('images\\MildDemented\\28.jpg'))
-# should be Mild Alzheimer's
 
 
